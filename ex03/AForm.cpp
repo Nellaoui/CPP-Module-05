@@ -1,14 +1,14 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("donpha"), _singingStatus(false)  , _gradeRequired(1), _gradeExecute(1)
+AForm::AForm() : _name("donpha"), _singingStatus(false)  , _gradeRequired(1), _gradeExecute(1)
 {
 }
 
-Form::Form(std::string name, const int gradeRequired, const int gradeExecute) : _name(name),   _gradeRequired(gradeRequired) , _gradeExecute(gradeExecute)
+AForm::AForm(std::string name, const int gradeRequired, const int gradeExecute) : _name(name),   _gradeRequired(gradeRequired) , _gradeExecute(gradeExecute)
 {
 	if (gradeRequired > 150 || gradeExecute > 150)
 		throw GradeTooLowException();
@@ -16,7 +16,7 @@ Form::Form(std::string name, const int gradeRequired, const int gradeExecute) : 
 		throw GradeTooHighException();
 }
 
-Form::Form( const Form & src ) : _name(src._name) , _gradeRequired(src._gradeRequired), _gradeExecute(src._gradeExecute)
+AForm::AForm( const AForm & src ) : _name(src._name) , _gradeRequired(src._gradeRequired), _gradeExecute(src._gradeExecute)
 {
 	*this = src;
 }
@@ -26,7 +26,7 @@ Form::Form( const Form & src ) : _name(src._name) , _gradeRequired(src._gradeReq
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form()
+AForm::~AForm()
 {
 }
 
@@ -35,16 +35,16 @@ Form::~Form()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Form &				Form::operator=( Form const & rhs )
+AForm &				AForm::operator=( AForm const & rhs )
 {
 	if ( this != &rhs )
 	{
-		// this->_grade = rhs.getGrade();
+		this->_singingStatus = rhs._singingStatus;
 	}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Form const & i )
+std::ostream	&operator<<( std::ostream &o, AForm const & i )
 {
 	o << i.getName() << " bureaucrat grade " << i.getGradeExecute() << std::endl;
 	return o;
@@ -55,7 +55,7 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Form::beSigned(Bureaucrat &bureaucrat)
+void AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	if (!this->_singingStatus)
 	{
@@ -70,19 +70,19 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-const std::string Form::getName() const
+const std::string AForm::getName() const
 {
 	return _name;
 }
-int Form::getGradeRequired() const
+int AForm::getGradeRequired() const
 {
 	return _gradeRequired;
 }
-int Form::getGradeExecute() const
+int AForm::getGradeExecute() const
 {
 	return _gradeExecute;
 }
-bool Form::GetSingingStatus() const
+bool AForm::GetSingingStatus() const
 {
 	return _singingStatus;
 }

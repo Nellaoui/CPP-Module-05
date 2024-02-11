@@ -1,5 +1,5 @@
-#ifndef Form_HPP
-# define Form_HPP
+#ifndef AForm_HPP
+# define AForm_HPP
 
 # include <iostream>
 # include <string>
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 
 	public:
@@ -28,20 +28,21 @@ class Form
 				return "Grade Is Too Low! ⬇️";
 			}
 	};
-		Form();
-		Form(std::string name,const int gradeRequired, const int gradeExecute);
-		Form( Form const & src );
+		AForm();
+		AForm(std::string name,const int gradeRequired, const int gradeExecute);
+		AForm( AForm const & src );
 
-		~Form();
+		virtual	~AForm() = 0;
 
 	const std::string getName() const;
 	int getGradeRequired() const;
 	int getGradeExecute() const;
 	bool GetSingingStatus() const;
 
-    void beSigned(Bureaucrat &bureaucrat);
+	void beSigned(Bureaucrat &bureaucrat);
+	virtual void execute(Bureaucrat const &executor) const = 0;
 
-		Form &		operator=( Form const & rhs );
+	AForm &		operator=( AForm const & rhs );
 
 	private:
 		const std::string _name;
@@ -51,6 +52,6 @@ class Form
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Form const & i );
+std::ostream &			operator<<( std::ostream & o, AForm const & i );
 
-#endif /* ************************************************************ Form_H */
+#endif /* ************************************************************ AForm_H */

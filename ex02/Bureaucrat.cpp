@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -71,18 +71,33 @@ void Bureaucrat::decrementGrade()
 		this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &Form)
+void Bureaucrat::signAForm(AForm &AForm)
 {
 	try
 	{
-		Form.beSigned(*this);
-		std::cout << this->getName() << " signed " << Form.getName() << std::endl;
+		AForm.beSigned(*this);
+		std::cout << this->getName() << " signed " << AForm.getName() << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << " Bureaucrat " << this->_name << " couldn`t sign " <<  Form.getName() << " because :" << std::endl;
+		std::cerr << " Bureaucrat " << this->_name << " couldn`t sign " <<  AForm.getName() << " because :" << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executes " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << " Bureaucrat " << this->_name << " couldn`t execute " <<  form.getName() << " because :" << std::endl;
+		std::cerr << e.what() << '\n';
+	}
+
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

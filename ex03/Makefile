@@ -2,7 +2,7 @@ Name = Bureaucrat
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = Bureaucrat.cpp main.cpp AForm.cpp
+SRC = AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp  main.cpp Intern.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -18,4 +18,5 @@ clean:
 	rm -f $(OBJ)
 fclean: clean
 	rm -fr $(Name)
+	rm -fr *_shrubbery
 re : fclean all
