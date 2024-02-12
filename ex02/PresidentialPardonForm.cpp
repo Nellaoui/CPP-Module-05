@@ -50,7 +50,6 @@ std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & __
 */
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	(void)executor;
 	if (this->GetSingingStatus())
 	{
 		if (executor.getGrade() <= this->getGradeRequired())
