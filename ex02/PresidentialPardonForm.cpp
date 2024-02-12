@@ -53,7 +53,7 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	(void)executor;
 	if (this->GetSingingStatus())
 	{
-		if (this->getGradeExecute() <= this->getGradeRequired())
+		if (executor.getGrade() <= this->getGradeRequired())
 		{
 			std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 		}

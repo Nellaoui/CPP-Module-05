@@ -53,10 +53,9 @@ std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & __unu
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	(void)executor;
 	if (this->GetSingingStatus())
 	{
-		if (this->getGradeExecute() <+ this->getGradeRequired())
+		if (executor.getGrade() <= this->getGradeRequired())
 		{
 			srand(time(0));
 			std::cout << " DRRRRRRRRRRR 💥 " << std::endl;
