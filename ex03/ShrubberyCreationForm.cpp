@@ -53,7 +53,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (this->GetSingingStatus())
 	{
-		if (this->getGradeExecute() <= this->getGradeRequired())
+		if (executor.getGrade() <= this->getGradeRequired())
 		{
 			std::ofstream outputFile(_target + "_shrubbery");
 			if (outputFile.is_open())
